@@ -25,7 +25,9 @@ source-repository head
 
 library
   exposed-modules:
-      Lib
+      Exception
+      Lexer
+      MyPrint
   other-modules:
       Paths_c2
   autogen-modules:
@@ -35,6 +37,8 @@ library
   ghc-options: -Wall -Wcompat -Widentities -Wincomplete-record-updates -Wincomplete-uni-patterns -Wmissing-export-lists -Wmissing-home-modules -Wpartial-fields -Wredundant-constraints
   build-depends:
       base >=4.7 && <5
+    , mtl
+    , text
   default-language: Haskell2010
 
 executable computor-v2
@@ -49,6 +53,8 @@ executable computor-v2
   build-depends:
       base >=4.7 && <5
     , c2
+    , mtl
+    , text
   default-language: Haskell2010
 
 test-suite c2-test
@@ -64,4 +70,6 @@ test-suite c2-test
   build-depends:
       base >=4.7 && <5
     , c2
+    , mtl
+    , text
   default-language: Haskell2010
