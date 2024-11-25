@@ -1,6 +1,7 @@
 module Main (main) where
 
 import Lexer
+import Parser
 import MyPrint
 import System.IO as SysIO
 import qualified Data.Text as T
@@ -33,6 +34,9 @@ evaluate expression = do -- IOコンテキスト
 
     tokens <- lexer expression
     liftIO $ MyPrint.printLine "Tokens" $ T.pack $ show tokens
+
+    ast <- parseLine expression tokens
+    liftIO $ MyPrint.printLine "AST" $ T.pack $ show ast
 
   case result of
       Left err -> do

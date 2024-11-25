@@ -19,7 +19,6 @@ data Token
   | TokRParen TokenRange -- ')'
   | TokLBraket TokenRange -- '['
   | TokRBraket TokenRange -- ']'
-  | TokEx TokenRange -- '!'
   | TokQ TokenRange -- '?'
   deriving (Show, Eq)
 
@@ -52,7 +51,6 @@ tokenRange (TokLParen r) = r
 tokenRange (TokRParen r) = r
 tokenRange (TokLBraket r) = r
 tokenRange (TokRBraket r) = r
-tokenRange (TokEx r) = r
 tokenRange (TokQ r) = r
 
 lexer :: T.Text -> ExceptTT [Token]
@@ -119,7 +117,6 @@ lexer_ ctx txt = case T.uncons txt of
         | c_ == ')' = addToken TokRParen
         | c_ == '[' = addToken TokLBraket
         | c_ == ']' = addToken TokRBraket
-        | c_ == '!' = addToken TokEx
         | c_ == '?' = addToken TokQ
         | otherwise = sayError ctx_ $ T.pack $ "Unexpected character: " ++ [c_]
         where

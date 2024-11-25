@@ -25,9 +25,11 @@ source-repository head
 
 library
   exposed-modules:
+      AST
       Exception
       Lexer
       MyPrint
+      Parser
   other-modules:
       Paths_c2
   autogen-modules:
